@@ -13,8 +13,9 @@ AFRAME.registerSystem('research-logger', {
     this.lastFpsUpdate = performance.now();
     this.frameCount = 0;
     this.tickPayloadSize = 4000;
-    this.ntpMoment = require('moment');
-    console.log("ntpMoment value in init: ",this.ntpMoment);
+//    this.ntpMoment = require('moment');
+    this.ntpMoment = 54321;
+    console.log("intiatlizing research-logger");
     this.payload = [];
   },
 
@@ -22,7 +23,8 @@ AFRAME.registerSystem('research-logger', {
   /*    if (!this.enableLogger) {
        return;
      }*/
-    const timestamp = this.ntpMoment.utc().valueOf();
+//    const timestamp = this.ntpMoment.utc().valueOf();
+    const timestamp = 54321;
     // FPS
     const now = performance.now();
     this.frameCount++;
