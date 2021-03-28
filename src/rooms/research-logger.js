@@ -1,6 +1,6 @@
 //import qsTruthy from "../../utils/qs_truthy";
 //import axios from "axios";
-//import { v4 as uuidv4 } from "uuid";
+// import { v4 as uuidv4 } from "uuid";
 //import { detectOS } from 'detect-browser';
 
 
@@ -15,7 +15,7 @@ AFRAME.registerSystem('research-logger', {
     this.tickPayloadSize = 4000;
 //    this.ntpMoment = require('moment');
     this.ntpMoment = 54321;
-    console.log("intiatlizing research-logger");
+    console.log("initializing research-logger");
     this.payload = [];
   },
 
@@ -88,7 +88,8 @@ AFRAME.registerSystem('research-logger', {
         avatarRig.components["player-info"].isOwner,
       ];
       infodata = infodata.concat(this.getDeviceInfo());
-      this.researchCollect({ info: infodata, data: this.payload });
+      console.log("data is: ", JSON.stringify(this.payload));
+     // this.researchCollect({ info: infodata, data: this.payload });
       this.payload = [];
       this.tickCount = 0;
     }
@@ -117,19 +118,19 @@ AFRAME.registerSystem('research-logger', {
     return deviceInfo;
   },
 
-  researchCollect(data, url =  "https://asynkronix.se/convirt/log/") {
+ /*  researchCollect(data, url =  "https://asynkronix.se/convirt/log/") {
     console.log("Entering researchCollect");
     console.log("data is: ", JSON.stringify(data))
     if (data === undefined) return;
-  /*  axios
+   axios
       .post(url, data)
       .then(response => {
         // console.log(response);
       })
       .catch(error => {
         console.log("Logger Error:", error);
-      });*/
-  }
+      });
+  }*/
 });
 
 
@@ -137,11 +138,12 @@ AFRAME.registerSystem('research-logger', {
 // into the Hub Store but nah.  RFC4122 UUIDs from
 // https://github.com/uuidjs/uuid
 function getUUID(appkey = "socialvr4chi") {
- /* let uuid = localStorage.getItem(appkey);
-  if (uuid === null) {
-    uuid = uuidv4();
-    localStorage.setItem(appkey, uuid);
-  }
-  return uuid;*/
+  //let uuid = localStorage.getItem(appkey);
+//console.log("in uuid with value: ",uuid);
+  //if (uuid === null) {
+    //uuid = uuidv4();
+    //localStorage.setItem(appkey, uuid);
+  //}
+ // return uuid;
 }
 
