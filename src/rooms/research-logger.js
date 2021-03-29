@@ -1,6 +1,6 @@
 //import qsTruthy from "../../utils/qs_truthy";
 //import axios from "axios";
-// import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "../../node_modules/uuid";
 //import { detectOS } from 'detect-browser';
 
 
