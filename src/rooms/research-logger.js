@@ -1,8 +1,7 @@
 //import qsTruthy from "../../utils/qs_truthy";
-//import axios from "axios";
-import { v4 as uuidv4 } from "../../node_modules/uuid";
-//import { detectOS } from 'detect-browser';
-
+//import axios from 'https://cdn.skypack.dev/axios';
+import { v4 as uuidv4 } from 'https://cdn.skypack.dev/uuid';
+import { detectOS } from 'https://cdn.skypack.dev/detect-browser';
 
 AFRAME.registerSystem('research-logger', {
   init: function() {
@@ -78,7 +77,7 @@ AFRAME.registerSystem('research-logger', {
     ]);
     if (++this.tickCount > this.tickPayloadSize) {
       let infodata = [
-      //  getUUID(),
+        getUUID(),
         timestamp, // post time
         window.APP.store.credentialsAccountId !== null ? window.APP.store.credentialsAccountId : "",
         window.APP.store.state.profile.avatarId,
@@ -89,6 +88,7 @@ AFRAME.registerSystem('research-logger', {
       ];
       infodata = infodata.concat(this.getDeviceInfo());
       console.log("data is: ", JSON.stringify(this.payload));
+      console.log('UUID is: ',uuidv4());
      // this.researchCollect({ info: infodata, data: this.payload });
       this.payload = [];
       this.tickCount = 0;
@@ -102,7 +102,7 @@ AFRAME.registerSystem('research-logger', {
   // This doesn't change a lot, so lets just push it once per POST
   getDeviceInfo() {
     const deviceInfo = [
-   //   detectOS(navigator.userAgent),
+      detectOS(navigator.userAgent),
       AFRAME.utils.device.isBrowserEnvironment ? 1 : 0,
       AFRAME.utils.device.checkARSupport() ? 1 : 0,
       AFRAME.utils.device.checkHeadsetConnected() ? 1 : 0,
@@ -115,6 +115,7 @@ AFRAME.registerSystem('research-logger', {
       AFRAME.utils.device.isTablet() ? 1 : 0,
       AFRAME.utils.device.isWebXRAvailable ? 1 : 0
     ];
+    console.log('The device info is: ',deviceInfo)
     return deviceInfo;
   },
 
